@@ -1,0 +1,47 @@
+# 复制为 config.toml 之后，把 token / cloud_access_key 换成你自己的。
+# 仓库里只放模板：真实密钥永远不进 git。
+
+# voxd-cloud —— 云端语音服务（火山声音复刻 2.0）
+# 只做一件事：把文本发给火山，拿回音频。本地不留模型。
+[server]
+host = "127.0.0.1"
+port = 8767
+token = ""
+
+[engine]
+primary = "cloud"
+fallbacks = ["piper"]             # 云端失败/断网 → 本地兜底（机械音，但不断流）
+
+# 本地兜底（只占 61MB）
+piper_model = "models/zh_CN-huayan-medium.onnx"
+device = "cpu"
+gap_ms = 80
+warmup = ["piper"]                # 启动预热兜底，云端不需要预热
+
+# 云端：火山「豆包声音复刻模型 2.0」
+# resource id 必须是 seed-icl-2.0（其他 id 会报 403/55000000）
+cloud_app_id = "3773727341"
+cloud_access_key = ""
+cloud_resource = "seed-icl-2.0"
+
+# 云端不给本地引擎留位置：这些指向不存在的地址，真的被选到会直接报错，
+# 比"悄悄换一个声音"安全。
+gsv_url = "http://127.0.0.1:9"
+cosy_url = "http://127.0.0.1:9"
+cosy_max_chars = 0
+
+[voice]
+default = "age12-cloud"
+[voice.characters]
+xiaoyu = "age12-cloud"
+
+[limits]
+max_chars = 2000
+queue_max = 64
+
+[cache]
+dir = "cache"
+max_mb = 512
+
+[ffmpeg]
+path = ""
