@@ -1,0 +1,10 @@
+{
+  "archives": [
+    {
+      "name": "voice-cloud-models.tar.gz",
+      "url": "https://github.com/Mieksido/surfvoicecloud/releases/download/v0.1.0/voice-cloud-models.tar.gz",
+      "sha256": "efbb9f9f3e40c03d4f38a65d4125bfabb354df801f7f673d9f7302472c317641",
+      "size": 58395517
+    }
+  ]
+}
