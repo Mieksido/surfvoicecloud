@@ -20,7 +20,7 @@ warmup = ["piper"]                # 启动预热兜底，云端不需要预热
 
 # 云端：火山「豆包声音复刻模型 2.0」
 # resource id 必须是 seed-icl-2.0（其他 id 会报 403/55000000）
-cloud_app_id = "3773727341"
+cloud_app_id = ""              # 你自己的火山 AppID（不预置任何凭据）
 cloud_access_key = ""
 cloud_resource = "seed-icl-2.0"
 
